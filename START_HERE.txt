@@ -1,0 +1,16 @@
+JEV vs LLM — SIMPLE UX V3
+=========================
+
+1. Copy .env.example to .env
+2. Add your TypeSafe key and Azure Foundry values
+3. Start with MOCK_MODE=true
+4. Run: .\run.ps1   (or run.bat)
+5. Open: http://127.0.0.1:8010
+6. Click "Run comparison"
+7. When the UI looks right, set MOCK_MODE=false and rerun once live
+
+Keep these TypeSafe values unchanged:
+TYPESAFE_MODEL=jev-latest
+TYPESAFE_BASE_URL=https://api.typesafe.ai/v1/systemone
+
+Important: requirements.txt no longer uses uvicorn[standard], so Windows ARM64 should not try to compile httptools.
