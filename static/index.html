@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>JEV vs LLM — Banking Decision Demo</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <div class="eyebrow">SYNTHETIC BANKING DECISION DEMO</div>
+        <h1>JEV vs GPT-5.6 Terra</h1>
+        <p>Same payment state. Different AI outputs. Live latency, token and provider-cost comparison.</p>
+      </div>
+      <div id="mode" class="pill">loading…</div>
+    </header>
+
+    <nav>
+      <button class="tab active" data-tab="live">Live comparison</button>
+      <button class="tab" data-tab="how">How it works</button>
+      <button class="tab" data-tab="scale">Scale test</button>
+    </nav>
+
+    <section id="live" class="panel active">
+      <div class="variant-row" id="variants"></div>
+      <div class="grid">
+        <article class="card payment">
+          <h2>Incoming payment</h2>
+          <div id="facts"></div>
+        </article>
+        <article class="card llm">
+          <h2>GPT-5.6 Terra</h2>
+          <div class="sub">Azure Foundry · language model</div>
+          <div id="llmOutput" class="empty">Run comparison to see a human-readable assessment.</div>
+          <div id="llmMetrics" class="metrics"></div>
+        </article>
+        <article class="card jev">
+          <h2>JEV</h2>
+          <div class="sub">TypeSafe AI · System One model</div>
+          <div id="jevOutput" class="empty">Run comparison to see typed probabilistic decision signals.</div>
+          <div id="jevMetrics" class="metrics"></div>
+        </article>
+      </div>
+      <div class="run"><button id="runComparison">Run comparison</button></div>
+    </section>
+
+    <section id="how" class="panel">
+      <div class="how-grid">
+        <article class="card"><h2>LLM</h2><p><b>state → generate tokens → language → parse → act</b></p><p>Useful when a human needs explanation, reasoning or text.</p></article>
+        <article class="card"><h2>JEV</h2><p><b>state → typed questions → probabilities → policy → act</b></p><p>Useful when software needs repeatable decision signals.</p></article>
+      </div>
+    </section>
+
+    <section id="scale" class="panel">
+      <article class="card">
+        <h2>Scale test</h2>
+        <p>Run the same synthetic workflow across many cases. Maximum: 1000.</p>
+        <div class="controls">
+          <label>Cases <input id="cases" type="number" min="1" max="1000" value="20"/></label>
+          <label>Provider
+            <select id="provider"><option value="both">JEV + Foundry LLM</option><option value="jev">JEV only</option><option value="llm">Foundry LLM only</option></select>
+          </label>
+          <button id="runScale">Run scale test</button>
+        </div>
+        <div id="scaleOutput"></div>
+      </article>
+    </section>
+
+    <footer>All data is synthetic. Architecture demonstration only — not a production fraud, AML, sanctions or payment decisioning system.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
